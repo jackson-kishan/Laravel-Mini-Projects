@@ -45,4 +45,19 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function hasLiked($postId)
+    {
+        return $this->likes()->where('post_id', $postId)->where('like', true)->exists();
+    }
+
+    public function hasDisliked($postId)
+    {
+        return $this->likes()->where('post_id', $postId)->where('like', false)->exists();
+    }
+
+    public function toggleLikeDislike($postId, $like)
+    {
+        
+    }
 }
