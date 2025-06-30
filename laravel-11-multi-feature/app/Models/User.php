@@ -58,6 +58,28 @@ class User extends Authenticatable
 
     public function toggleLikeDislike($postId, $like)
     {
-        
+       // Check if the like/dislike already exists
+       $existingLike = $this->likes()->where('post_id', $postId)->first();
+
+       if($existingLike){
+         if($existingLike->like == $like) {
+            $existingLike->delete();
+
+            return [
+               'hasLiked' => false,
+               'hasDisliked' => false
+            ];
+         } else {
+            $this->likes()->create([
+              'post_id' => $postId,
+              'like' => $like
+            ]);
+         }
+       }
+
+       return [
+         'hasLiked' => $this->hasLiked($postId),
+         'hasDisliked' => $this->hasDisliked($postId)
+       ];
     }
 }
