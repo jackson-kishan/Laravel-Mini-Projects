@@ -3,6 +3,7 @@
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\LikeDislikeController;
 use App\Http\Controllers\UploadImageController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,3 +24,7 @@ Route::middleware('auth')->group(function () {
   Route::get('/posts',[LikeDislikeController::class, 'index'])->name('ld.index');
   Route::post('/posts/like-dislike',[LikeDislikeController::class, 'likes'])->name('ld.store');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
