@@ -1,0 +1,5 @@
+1. Like Dislike option -> https://www.itsolutionstuff.com/post/laravel-11-like-dislike-system-tutorial-exampleexample.html
+2. PDF Generator -> https://www.itsolutionstuff.com/post/laravel-12-generate-pdf-file-using-dompdf-exampleexample.html
+3. JQuery load data -> https://www.itsolutionstuff.com/post/laravel-11-jquery-load-more-data-on-scroll-exampleexample.html
+
+
