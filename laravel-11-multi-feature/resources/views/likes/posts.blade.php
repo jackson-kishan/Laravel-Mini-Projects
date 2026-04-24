@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('style')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style type="text/css">
     i{
         cursor: pointer;
@@ -47,15 +46,14 @@
         </div>
     </div>
 </div>
-@endsection
 
-@section('script')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" referrerpolicy="no-referrer"></script>
-<script type="text/javascript">
-    $(document).ready() {
+<script type="module">
+
+    $(document).ready(function() {
         $.ajaxSetup({
-            headers:
-            'X-CSRF-TOKEN': $('meta[name="scrf-token"]').attr('content')
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
         });
 
         $('.like-box i').click(function () {
@@ -66,13 +64,13 @@
 
             $.ajax({
                 type: 'POST',
-                url: "{{ route('ld.store') }}",
+                url: "{{ route('like.dislike.store') }}",
                 data: { id: id, like: like },
                 success: function(data) {
                     if(data.success.hasLiked === true) {
 
                         if($(boxObj).find('.dislike').hasClass('fa-solid')) {
-                            let dislike = $(boxObj).find('.dislike-count').text();
+                            let dislikes = $(boxObj).find('.dislike-count').text();
                             $(boxObj).find(".dislike-count").text(parseInt(dislikes)-1);
                         }
 
@@ -85,12 +83,41 @@
                         var likes = $(boxObj).find(".like-count").text();
                         $(boxObj).find(".like-count").text(parseInt(likes)+1);
 
-                    } else if(data.success.hasLiked === true) {
-                        if($(boxObj)).find(".like").hasClass("fa-sold")
+                    } else if(data.success.hasDisliked === true) {
+                        if($(boxObj).find(".like").hasClass("fa-solid")){
+                            var likes = $(boxObj).find(".like-count").text();
+                            $(boxObj).find(".like-count").text(parseInt(likes)-1);
+                        }
+
+                        $(boxObj).find(".like").removeClass("fa-solid");
+                        $(boxObj).find(".like").addClass("fa-regular");
+
+                        var dislikes = $(boxObj).find(".dislike-count").text();
+                        $(boxObj).find(".dislike-count").text(parseInt(dislikes)+1);
+                    } else {
+                        if($(boxObj).find(".dislike").hasClass("fa-solid")) {
+                            var dislikes = $(boxObj).find(".dislike-count").text();
+                            $(boxObj).find(".dislike-count").text(parseInt(dislikes)-1);
+                        }
+
+                        if($(boxObj).find(".like").hasClass("fa-solid")){
+                            var likes = $(boxObj).find(".like-count").text();
+                            $(boxObj).find(".like-count").text(parseInt(likes)-1);
+                        }
+
+                        $(boxObj).find(".like").removeClass("fa-solid");
+                        $(boxObj).find(".like").addClass("fa-regular");
+
+
+                        $(boxObj).find(".dislike").removeClass("fa-solid");
+                        $(boxObj).find(".dislike").addClass("fa-regular");
+
                     }
                 }
             })
         })
-    }
+    });
 </script>
 @endsection
+
+

@@ -21,8 +21,8 @@ Route::get('upload', [UploadImageController::class, 'store']);
 
 // Like Dislike System
 Route::middleware('auth')->group(function () {
-  Route::get('/posts',[LikeDislikeController::class, 'index'])->name('ld.index');
-  Route::post('/posts/like-dislike',[LikeDislikeController::class, 'likes'])->name('ld.store');
+  Route::get('/posts',[LikeDislikeController::class, 'index'])->name('like.dislike.index');
+  Route::post('/posts/like-dislike',[LikeDislikeController::class, 'likes'])->name('like.dislike.store');
 });
 
 Auth::routes();
