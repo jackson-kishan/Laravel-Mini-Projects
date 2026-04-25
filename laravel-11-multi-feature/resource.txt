@@ -2,5 +2,6 @@
 2. PDF Generator -> https://www.itsolutionstuff.com/post/laravel-12-generate-pdf-file-using-dompdf-exampleexample.html
 3. JQuery load data -> https://www.itsolutionstuff.com/post/laravel-11-jquery-load-more-data-on-scroll-exampleexample.html
 4. Get Online User -> https://www.itsolutionstuff.com/post/how-to-get-online-users-in-laravelexample.html
+5. Automatic Daily Database Backup -> https://www.itsolutionstuff.com/post/laravel-automatic-daily-database-backup-tutorialexample.html
 
 
