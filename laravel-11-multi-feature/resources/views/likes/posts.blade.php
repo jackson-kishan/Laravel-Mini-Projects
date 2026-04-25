@@ -30,9 +30,10 @@
                                         data-post-id="{{ $post->id }}"
                                         class="like fa-thumbs-up {{ auth()->user()->hasLiked($post->id) ? 'fa-solid' : 'fa-regular' }}"></i>
                                     <span class="like-count">{{ $post->likes->count() }}</span>
-                                    <i id="like-{{ $post->id }}"
+                                    <i id="dislike-{{ $post->id }}"
                                         data-post-id="{{ $post->id }}"
                                         class="dislike fa-thumbs-down {{ auth()->user()->hasDisliked($post->id) ? 'fa-solid' : 'fa-regular' }}"></i>
+                                        {{-- {{ dd(auth()->user()->hasLiked($post->id)) }} --}}
                                     <span class="dislike-count">{{ $post->dislikes->count() }}</span>
                                 </div>
                               </div>
@@ -47,6 +48,10 @@
     </div>
 </div>
 
+@endsection
+
+@section("script")
+
 <script type="module">
 
     $(document).ready(function() {
@@ -59,7 +64,7 @@
         $('.like-box i').click(function () {
             let id = $(this).attr('data-post-id');
             let boxObj = $(this).parent('div');
-            let c = $(this).parent('div').find('span').text();
+            let c = $(boxObj).find('span').text();
             let like = $(this).hasClass('like') ? 1 : 0;
 
             $.ajax({
@@ -118,6 +123,7 @@
         })
     });
 </script>
+
 @endsection
 
 
