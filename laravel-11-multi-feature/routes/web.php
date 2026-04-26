@@ -25,7 +25,16 @@ Route::middleware(['auth', 'userActivity'])->group(function () {
   Route::get('/posts',[LikeDislikeController::class, 'index'])->name('like.dislike.index');
   Route::post('/posts/like-dislike',[LikeDislikeController::class, 'likes'])->name('like.dislike.store');
 
+  //Show active users
   Route::get('active-users', [UserController::class, 'activeUser'])->name('active.user');
+
+  //Delete and Restore users
+  Route::get('show-users', [UserController::class, 'showUsersIndex'])->name('users.index');
+  Route::delete('users/{id}', [UserController::class, 'deleteUser'])->name('users.delete');
+  Route::get('users/restore/{id}', [UserController::class, 'restoreUser'])->name('users.restore');
+  Route::get('restore-all', [UserController::class, 'restoreAllUsers'])->name('users.restore.all');
+
+
 });
 
 Auth::routes();

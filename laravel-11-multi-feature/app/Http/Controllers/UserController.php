@@ -18,4 +18,36 @@ class UserController extends Controller
 
       return view('users.active-users', compact('users'));
     }
+
+    public function showUsersIndex(Request $request)
+    {
+      $users = User::select("*");
+
+      if($request->has('view_deleted')) {
+        $users = $users->onlyTrashed();
+      }
+
+      $users = $users->paginate(10);
+
+      return view('users.restore-users', ['users' => $users]);
+    }
+
+    public function deleteUser($id)
+    {
+        User::find($id)->delete();
+
+        return back();
+    }
+
+    public function restoreUser($id)
+    {
+        User::withTrashed()->find($id)->restore();
+    }
+
+
+    public function restoreAllUsers()
+    {
+        User::withTrashed()->restore();
+        return back();
+    }
 }
