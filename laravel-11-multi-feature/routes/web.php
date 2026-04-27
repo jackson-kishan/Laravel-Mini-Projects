@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\LikeDislikeController;
+use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\UploadImageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +36,12 @@ Route::middleware(['auth', 'userActivity'])->group(function () {
   Route::get('restore-all', [UserController::class, 'restoreAllUsers'])->name('users.restore.all');
 
 
+});
+
+//Stripe Payment
+Route::controller(StripePaymentController::class)->group(function() {
+   Route::get('stripe', 'stripe');
+   Route::post('stripe', 'stripePost')->name('stripe.post');
 });
 
 Auth::routes();

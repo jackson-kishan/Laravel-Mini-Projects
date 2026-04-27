@@ -4,5 +4,6 @@
 4. Get Online User -> https://www.itsolutionstuff.com/post/how-to-get-online-users-in-laravelexample.html
 5. Automatic Daily Database Backup -> https://www.itsolutionstuff.com/post/laravel-automatic-daily-database-backup-tutorialexample.html
 6. Delete and restore users -> https://www.itsolutionstuff.com/post/how-to-restore-deleted-records-in-laravelexample.html
+7. strip payment geteway -> https://www.itsolutionstuff.com/post/laravel-11-stripe-payment-gateway-integration-exampleexample.html
 
 
