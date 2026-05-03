@@ -13,8 +13,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-       $this->call([
-        DefaultUserSeeder::class,
+    //    $this->call([
+    //     DefaultUserSeeder::class,
+    //    ]);
+       User::create([
+        'name' => 'super admin',
+        'email' => 'admin@admin.com',
+        'password' => 'admin1234',
+        'is_admin' => 1,
        ]);
     }
 }

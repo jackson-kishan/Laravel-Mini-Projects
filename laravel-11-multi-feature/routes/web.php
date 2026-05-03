@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\LikeDislikeController;
+use App\Http\Controllers\NotificationPostController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\UploadImageController;
 use App\Http\Controllers\UserController;
@@ -34,6 +35,12 @@ Route::middleware(['auth', 'userActivity'])->group(function () {
   Route::delete('users/{id}', [UserController::class, 'deleteUser'])->name('users.delete');
   Route::get('users/restore/{id}', [UserController::class, 'restoreUser'])->name('users.restore');
   Route::get('restore-all', [UserController::class, 'restoreAllUsers'])->name('users.restore.all');
+
+  //Send Post approvel notification
+  Route::get('/notify-posts', [NotificationPostController::class, 'index'])->name('notify.posts.index');
+  Route::post('/notify-posts', [NotificationPostController::class, 'store'])->name('notify.posts.store');
+  Route::get('/notify-posts/{id}/approve', [NotificationPostController::class, 'approve'])->name('notify.posts.approve');
+  Route::get('/notify-posts/{id}/mark-as-read', [NotificationPostController::class, 'markAsRead'])->name('notify.posts.mark.as.read');
 
 
 });
