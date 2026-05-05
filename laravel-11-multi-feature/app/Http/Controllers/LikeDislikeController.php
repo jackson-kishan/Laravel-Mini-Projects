@@ -10,7 +10,7 @@ class LikeDislikeController extends Controller
 {
     public function index()
     {
-        $posts = Post::get();
+        $posts = Post::get('*');
         return view('likes.posts', compact('posts'));
     }
 

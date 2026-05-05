@@ -3,6 +3,7 @@
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\LikeDislikeController;
 use App\Http\Controllers\NotificationPostController;
+use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\UploadImageController;
 use App\Http\Controllers\UserController;
@@ -42,6 +43,9 @@ Route::middleware(['auth', 'userActivity'])->group(function () {
   Route::get('/notify-posts/{id}/approve', [NotificationPostController::class, 'approve'])->name('notify.posts.approve');
   Route::get('/notify-posts/{id}/mark-as-read', [NotificationPostController::class, 'markAsRead'])->name('notify.posts.mark.as.read');
 
+
+  //Qr code generator
+  Route::get('/qr-code', [QrCodeController::class, 'index'])->name('qr.code.index');
 
 });
 
