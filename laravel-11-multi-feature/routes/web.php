@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\LikeDislikeController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\NotificationPostController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\StripePaymentController;
@@ -47,6 +48,9 @@ Route::middleware(['auth', 'userActivity'])->group(function () {
   //Qr code generator
   Route::get('/qr-code', [QrCodeController::class, 'index'])->name('qr.code.index');
 
+
+  //Send Mail using Queue
+  Route::get('/send-mail', [MailController::class, 'index'])->name('send.mail.index');
 });
 
 //Stripe Payment

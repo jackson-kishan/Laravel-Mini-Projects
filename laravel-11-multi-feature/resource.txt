@@ -6,4 +6,5 @@
 6. Delete and restore users -> https://www.itsolutionstuff.com/post/how-to-restore-deleted-records-in-laravelexample.html
 7. strip payment geteway -> https://www.itsolutionstuff.com/post/laravel-11-stripe-payment-gateway-integration-exampleexample.html
 8. Notification with database driver -> https://www.itsolutionstuff.com/post/laravel-12-notifications-with-database-driver-exampleexample.html
+9. Send Mail using Queue -> https://www.itsolutionstuff.com/post/laravel-12-send-email-using-queue-exampleexample.html
 
