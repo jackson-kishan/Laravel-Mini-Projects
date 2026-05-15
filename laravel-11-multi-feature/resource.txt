@@ -7,4 +7,4 @@
 7. strip payment geteway -> https://www.itsolutionstuff.com/post/laravel-11-stripe-payment-gateway-integration-exampleexample.html
 8. Notification with database driver -> https://www.itsolutionstuff.com/post/laravel-12-notifications-with-database-driver-exampleexample.html
 9. Send Mail using Queue -> https://www.itsolutionstuff.com/post/laravel-12-send-email-using-queue-exampleexample.html
-
+10. Product add to cart system -> https://www.itsolutionstuff.com/post/laravel-12-product-add-to-cart-functionality-exampleexample.html
