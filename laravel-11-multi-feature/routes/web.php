@@ -4,6 +4,7 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\LikeDislikeController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\NotificationPostController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\UploadImageController;
@@ -52,6 +53,13 @@ Route::middleware(['auth', 'userActivity'])->group(function () {
   //Send Mail using Queue
   Route::get('/send-mail', [MailController::class, 'index'])->name('send.mail.index');
 });
+
+// Add to Cart
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/cart', [ProductController::class, 'cart'])->name('cart.index');
+Route::post('/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add.to.cart');
+Route::patch('/update-cart', [ProductController::class, 'update'])->name('update.cart');
+Route::delete('/remove-from-cart', [ProductController::class, 'remove'])->name('remove.from.cart');
 
 //Stripe Payment
 Route::controller(StripePaymentController::class)->group(function() {
